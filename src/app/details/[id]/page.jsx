@@ -1,6 +1,7 @@
 'use server'; 
 
 import Image from "next/image";
+import StarRating from "@/app/components/StarRating";
 
 const Page = async ({ params }) => {
   const id = (await params).id;
@@ -17,12 +18,14 @@ const Page = async ({ params }) => {
       />
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
-      <section>Rating: {product.rating}</section>
+      <section>
+        Rating: <StarRating rating={product.rating} />
+      </section>
       <div>
         <h2>Reviews</h2>
         {product.reviews.map((review, index) => (
           <div key={index}>
-            <p>Rating: {review.rating}</p>
+            <p>Rating: <StarRating rating={review.rating}/> </p>
             <p>Date: {new Date(review.date).toLocaleDateString()}</p>
             <p>Name: {review.reviewerName}</p>
             <p>Email: {review.reviewerEmail}</p>
