@@ -6,7 +6,7 @@ const Header = () => {
     <div className="text-base border-solid border-2 m-2 border-blue-900 rounded-lg p-1">
       <ul className="flex space-x-12 ml-20">
         <li>
-          <Link href="/page.js">
+          <Link href="/">
             Home
           </Link>
         </li>
