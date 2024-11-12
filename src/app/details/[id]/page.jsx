@@ -12,6 +12,7 @@ const Page = async ({ params }) => {
         height={250}
         alt={product.title}
       />
+      {product.description}
       </div>;
   };
   
