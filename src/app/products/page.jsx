@@ -12,12 +12,12 @@ export default async function Home() {
             key={product.id}
             className="p-3 rounded-lg shadow-sm bg-blue-800"
           >
-            {/* <Image
+            <Image
               src={product.thumbnail}
               width={250}
               height={250}
               alt={product.title}
-            /> */}
+            />
             <Link href={`/details/${product.id}`}>{product.title}</Link>
           </div>
         );

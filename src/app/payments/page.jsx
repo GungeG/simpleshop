@@ -1,5 +1,5 @@
-const Kontakt = () => {
-    return <div>Kontakt...</div>;
+const Payment = () => {
+    return <div>Payment...</div>;
   };
   
-  export default Kontakt;
+  export default Payment;
