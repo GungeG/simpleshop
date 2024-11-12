@@ -1,13 +1,13 @@
-export default function Home() {
+"use client";
+
+const Header = () => {
   return (
-    <div className="border-solid border-blue-600">
-      <ul>
-        <li>
-          <a href="">Home</a>
-        </li>
-        <li>Products
-        </li>
-      </ul>
-    </div>
+    <div className="bg-blue-300 border-solid border-blue-900">
+<ul className="flex"><li><a href="">Home</a></li>
+<li><a href="">Products</a></li></ul>
+</div>
   );
-}
+};
+
+export default Header;
+
