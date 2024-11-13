@@ -10,22 +10,35 @@ const Page = async ({ params }) => {
   return (
     <main className="m-2">
       <section className="flex flex-col md:flex-row md:items-start mb-4">
-        <div className="md:w-1/2 mb-4 md:mb-0">
-          {product.images.map((image, index) => (
-            <Image
+        <div className="md:w-1/2 mb-4 md:mb-0 flex flex-col items-center justify-center">
+          <Image
+            src={product.images[0]}
+            width={500}
+            height={500}
+            alt={product.title}
+            className="w-auto h-auto mb-4"
+            priority
+            layout="fixed"
+          />
+          <div className="flex flex-wrap justify-center">
+            {product.images.slice(1).map((image, index) => (
+              <Image
               key={index}
               src={image}
-              width={500}
-              height={500}
-              alt={product.title}
-              className="w-full h-auto mb-4"
+              width={100}
+              height={100}
+              alt={`${product.title} ${index + 1}`}
+              className="w-24 h-24 mr-2 mb-2"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
-          ))}
+            ))}
+          </div>
         </div>
-        <div className="md:w-1/2 md:pl-4 max-w-prose">
+        <div className="md:w-1/2 md:pl-4 md:mt-24 max-w-prose">
           <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
           <p className="mb-2">{product.description}</p>
-          <p className="mb-2">Price: ${product.price}</p>
+          <p className="mb-5 mt-10 font-bold">Price: ${product.price}</p>
         </div>
       </section>
       <hr className="my-4 border-t border-gray-200" />
