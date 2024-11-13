@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="relative h-screen w-full">
-      <Image 
+      <Image
         src={"/static/images/Kiosk.jpg"} 
         layout="fill" 
         objectFit="cover" 
