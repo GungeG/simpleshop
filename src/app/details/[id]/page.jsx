@@ -8,16 +8,19 @@ const Page = async ({ params }) => {
   let response = await fetch(`https://dummyjson.com/products/${id}`);
   let product = await response.json();
   return (
-    <main>
+    <main className="m-2">
       <section className="flex flex-col md:flex-row md:items-start mb-4">
         <div className="md:w-1/2 mb-4 md:mb-0">
-          <Image
-            src={product.thumbnail}
-            width={500}
-            height={500}
-            alt={product.title}
-            className="w-full h-auto"
-          />
+          {product.images.map((image, index) => (
+            <Image
+              key={index}
+              src={image}
+              width={500}
+              height={500}
+              alt={product.title}
+              className="w-full h-auto mb-4"
+            />
+          ))}
         </div>
         <div className="md:w-1/2 md:pl-4 max-w-prose">
           <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
