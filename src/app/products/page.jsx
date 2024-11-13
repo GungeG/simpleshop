@@ -9,14 +9,19 @@ export default async function Home() {
       {data.products.map((product) => {
         return (
           <Link href={`/details/${product.id}`} key={product.id}>
-            <div className="p-3 rounded-lg shadow-sm bg-blue-800">
+            <div className="p-3 rounded-lg shadow-sm bg-blue-800 flex flex-col justify-between">
               <Image
                 src={product.thumbnail}
                 width={250}
                 height={250}
                 alt={product.title}
               />
-              {product.title}
+              <div className="w-56 h-12 flex items-end">
+                {product.title}
+              </div>
+              <div className="text-center mt-2">
+                <button className="p-2 bg-black rounded-xl w-56">Add to cart</button>
+              </div>
             </div>
           </Link>
         );
