@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="relative h-screen w-full">
       <Image 
-        src={"/images/kiosk.jpg"} 
+        src={"/static/images/Kiosk.jpg"} 
         layout="fill" 
         objectFit="cover" 
         alt="Kiosk" 
