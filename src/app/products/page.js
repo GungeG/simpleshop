@@ -88,7 +88,7 @@ export default function Home() {
         {cartItems.map((item, index) => (
           <div key={index} className="mb-4">
             <h3 className="text-lg">{item.title}</h3>
-            <Image src={item.thumbnail} alt={item.title} width={50} height={50} />
+            <Image className="w-20 h-auto" src={item.thumbnail} alt={item.title} width={50} height={50} />
           </div>
         ))}
         <Link href="/payment"><button className="p-2 bg-blue-800 text-white rounded-xl w-36">Checkout</button></Link>
