@@ -11,6 +11,8 @@ export default function Home() {
   const [categories, setCategories] = useState([]);
   // State to store the selected category from the dropdown
   const [selectedCategory, setSelectedCategory] = useState("");
+  // State to store the cart items
+  const [cartItems, setCartItems] = useState([]);
 
   // useEffect hook to fetch products data when the component mounts
   useEffect(() => {
@@ -35,13 +37,19 @@ export default function Home() {
     setSelectedCategory(event.target.value);
   };
 
+  // Function to handle adding items to the cart
+  const addToCart = (product) => {
+    setCartItems([...cartItems, product]);
+  };
+
   // Filter products based on the selected category
   const filteredProducts = selectedCategory
     ? products.filter(product => product.category === selectedCategory)
     : products;
 
   return (
-    <div className="min-h-screen p-8 pb-20 ">
+    <div className="min-h-screen p-8 pb-20 flex">
+      <div className="flex-1">
         <div className="mb-4">
           <label htmlFor="category" className="mr-2 text-lg font-semibold">Filter by category:</label>
           <select
@@ -56,25 +64,31 @@ export default function Home() {
             ))}
           </select>
         </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-16 items-center justify-items-center">
-        {filteredProducts.map((product) => (
-          <div key={product.id} className="p-3 rounded-lg shadow-sm bg-blue-800 flex flex-col justify-between">
-            <Link href={`/details/${product.id}`}>
-              <Image
-                src={product.thumbnail}
-                width={250}
-                height={250}
-                alt={product.title}
-              />
-              <div className="w-56 h-12 flex items-end text-white">
-                {product.title}
-              </div>
-            </Link>
-            <div className="text-center mt-2">
-              <button className="p-2 bg-black rounded-xl w-56 hover:bg-gray-800">Add to cart</button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-16 items-center justify-items-center">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="p-3 rounded-lg shadow-sm bg-blue-800 flex flex-col justify-between">
+              <Link href={`/details/${product.id}`}>
+                <Image
+                  src={product.thumbnail}
+                  width={250}
+                  height={250}
+                  alt={product.title}
+                />
+              </Link>
+              <button onClick={() => addToCart(product)} className="mt-2 p-2 bg-black text-white rounded-xl">Add to Cart</button>
             </div>
+          ))}
+        </div>
+      </div>
+      <div className={`w-48 border-l border-gray-300 p-4 ml-4 ${cartItems.length === 0 ? 'hidden' : ''}`}>
+        <h2 className="text-xl font-semibold mb-4">Cart</h2>
+        {cartItems.map((item, index) => (
+          <div key={index} className="mb-4">
+            <h3 className="text-lg">{item.title}</h3>
+            <Image src={item.thumbnail} alt={item.title} width={50} height={50} />
           </div>
         ))}
+        <Link href="/payment"><button className="p-2 bg-blue-800 text-white rounded-xl w-36">Checkout</button></Link>
       </div>
     </div>
   );
