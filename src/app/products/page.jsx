@@ -8,7 +8,7 @@ export default async function Home() {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-16 items-center justify-items-center min-h-screen p-8 pb-20 font-[family-name:var(--font-geist-sans)]">
       {data.products.map((product) => {
         return (
-          <div key={product.id} className="p-3 rounded-lg shadow-sm bg-blue-800 flex flex-col justify-between">
+          <div key={product.id} className="p-3 rounded-lg shadow-sm bg-blue-800 flex flex-col justify-between neon-glow">
             <Link href={`/details/${product.id}`} >
               <div className="bg-black p-2 rounded-xl">
                 <Image
