@@ -74,6 +74,9 @@ export default function Home() {
                   height={250}
                   alt={product.title}
                 />
+                <div className="w-40 h-12 flex items-end text-white">
+                {product.title}
+              </div>
               </Link>
               <button onClick={() => addToCart(product)} className="mt-2 p-2 bg-black text-white rounded-xl">Add to Cart</button>
             </div>
