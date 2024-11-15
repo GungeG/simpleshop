@@ -18,9 +18,7 @@ const Header = () => {
             </Link>
           </li>
         </ul>
-        <Link href="/payments">
         <SlBasket className="mr-8 text-2xl"/>
-        </Link>
       </div>
     </div>
   );
