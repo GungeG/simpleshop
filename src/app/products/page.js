@@ -128,8 +128,8 @@ export default function Home() {
               .toFixed(2)}
           </span>
         </div>
-        <Link href="/payment"/* {`/payment/${product.id, product.thumbnail, product.title}`} */>
-          <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
+        <Link href={`/payments?items=${product.id, product.thumbnail, product.title}`}>
+        <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
             Checkout
           </button>
         </Link>
