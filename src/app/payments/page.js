@@ -40,7 +40,7 @@ const Payment = () => {
         </h2>
       </div>
       <div className="flex justify-end mt-4">
-      <button className="p-2 bg-blue-800 text-white rounded-xl w-36" onClick={()=> {console.log("Thanks for your money!"),
+      <button className="p-2 bg-blue-800 text-white rounded-xl w-36" onClick={()=> {console.log("Thanks for your money :3 <3"),
       alert("Check Console.log :)")
       }}>
             Checkout
