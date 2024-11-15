@@ -4,12 +4,12 @@ import { useSearchParams } from 'next/navigation';
 
 const Payment = () => {
   const searchParams = useSearchParams();
-  const paramValue = searchParams.get('items'); // Replace 'test' with query parameter name
+  const paramValues = searchParams.getAll('items'); // Use 'getAll' to retrieve multiple values
 
   return (
     <div>
       Payment...
-      <div>Query Parameter Value: {paramValue}</div>
+      <div>Query Parameter Values: {paramValues.join(', ')}</div>
     </div>
   );
 };
