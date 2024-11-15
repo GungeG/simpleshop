@@ -24,7 +24,9 @@ export default function Home() {
       setProducts(data.products);
 
       // Extract unique categories from the products data
-      const uniqueCategories = [...new Set(data.products.map(product => product.category))];
+      const uniqueCategories = [
+        ...new Set(data.products.map((product) => product.category)),
+      ];
       // Set the categories state with the unique categories
       setCategories(uniqueCategories);
     }
@@ -44,14 +46,16 @@ export default function Home() {
 
   // Filter products based on the selected category
   const filteredProducts = selectedCategory
-    ? products.filter(product => product.category === selectedCategory)
+    ? products.filter((product) => product.category === selectedCategory)
     : products;
 
   return (
     <div className="min-h-screen p-8 pb-20 flex">
       <div className="flex-1">
         <div className="mb-4">
-          <label htmlFor="category" className="mr-2 text-lg font-semibold">Filter by category:</label>
+          <label htmlFor="category" className="mr-2 text-lg font-semibold">
+            Filter by category:
+          </label>
           <select
             id="category"
             value={selectedCategory}
@@ -59,14 +63,19 @@ export default function Home() {
             className="p-2 border border-gray-300 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">All</option>
-            {categories.map(category => (
-              <option key={category} value={category}>{category}</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
             ))}
           </select>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-16 items-center justify-items-center">
           {filteredProducts.map((product) => (
-            <div key={product.id} className="p-3 rounded-lg shadow-sm bg-blue-800 flex flex-col justify-between">
+            <div
+              key={product.id}
+              className="p-3 rounded-lg shadow-sm bg-blue-800 flex flex-col justify-between"
+            >
               <Link href={`/details/${product.id}`}>
                 <Image
                   src={product.thumbnail}
@@ -75,23 +84,55 @@ export default function Home() {
                   alt={product.title}
                 />
                 <div className="w-40 h-12 flex items-end text-white">
-                {product.title}
-              </div>
+                  {product.title}
+                </div>
+                <p className="mb-5 mt-2 font-bold">${product.price}</p>
               </Link>
-              <button onClick={() => addToCart(product)} className="mt-2 p-2 bg-black text-white rounded-xl">Add to Cart</button>
+              <button
+                onClick={() => addToCart(product)}
+                className="mt-2 p-2 bg-black text-white rounded-xl"
+              >
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>
       </div>
-      <div className={`w-48 border-l border-gray-300 p-4 ml-4 ${cartItems.length === 0 ? 'hidden' : ''}`}>
+      <div
+        className={`w-48 border-l border-gray-300 p-4 ml-4 ${
+          cartItems.length === 0 ? "hidden" : ""
+        }`}
+      >
         <h2 className="text-xl font-semibold mb-4">Cart</h2>
         {cartItems.map((item, index) => (
           <div key={index} className="mb-4">
             <h3 className="text-lg">{item.title}</h3>
-            <Image className="w-20 h-auto" src={item.thumbnail} alt={item.title} width={50} height={50} />
+            <div className="flex items-center justify-between">
+              <Image
+                className="w-20 h-auto"
+                src={item.thumbnail}
+                alt={item.title}
+                width={50}
+                height={50}
+              />
+              <p className="mb-2 mt-2 font-bold">${item.price}</p>
+            </div>
           </div>
         ))}
-        <Link href="/payment"><button className="p-2 bg-blue-800 text-white rounded-xl w-36">Checkout</button></Link>
+        <div className="flex justify-between mt-4 mb-4">
+          <span className="font-bold">Total:</span>
+          <span className="font-bold">
+            $
+            {cartItems
+              .reduce((total, item) => total + item.price, 0)
+              .toFixed(2)}
+          </span>
+        </div>
+        <Link href="/payment">
+          <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
+            Checkout
+          </button>
+        </Link>
       </div>
     </div>
   );
