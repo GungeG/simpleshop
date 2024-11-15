@@ -18,20 +18,21 @@ const Page = async ({ params }) => {
             alt={product.title}
             className="w-auto h-auto mb-4"
             priority
-            layout="fixed"
+            style={{ objectFit: "cover" }}
           />
           <div className="flex flex-wrap justify-center">
             {product.images.slice(1).map((image, index) => (
               <Image
-              key={index}
-              src={image}
-              width={100}
-              height={100}
-              alt={`${product.title} ${index + 1}`}
-              className="w-24 h-24 mr-2 mb-2"
-              loading="lazy"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+                key={index}
+                src={image}
+                width={100}
+                height={100}
+                alt={`${product.title} ${index + 1}`}
+                className="w-24 h-24 mr-2 mb-2"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: "cover" }}
+              />
             ))}
           </div>
         </div>
