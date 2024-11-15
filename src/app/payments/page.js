@@ -9,6 +9,9 @@ const Payment = () => {
   // Parse the paramValues to extract item details
   const items = paramValues.map((item) => JSON.parse(item));
 
+  // Calculate the total price
+  const totalPrice = items.reduce((total, item) => total + item.price, 0);
+
   return (
     <div>
       <h1>Payment</h1>
@@ -21,6 +24,7 @@ const Payment = () => {
           </div>
         ))}
       </div>
+      <h2>Total Price: ${totalPrice.toFixed(2)}</h2>
     </div>
   );
 };
