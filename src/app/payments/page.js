@@ -38,6 +38,11 @@ const Payment = () => {
           Total Price: ${totalPrice.toFixed(2)}
         </h2>
       </div>
+      <div className="flex justify-end mt-4">
+      <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
+            Checkout
+          </button>
+          </div>
     </div>
   );
 };
