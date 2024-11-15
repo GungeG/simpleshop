@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation';
 
 const Payment = () => {
   const searchParams = useSearchParams();
-  const paramValue = searchParams.get('test'); // Replace 'test' with query parameter name
+  const paramValue = searchParams.get('items'); // Replace 'test' with query parameter name
 
   return (
     <div>
