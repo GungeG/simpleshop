@@ -111,44 +111,42 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div
-        className={`w-48 border-l border-gray-300 p-4 ml-4 ${
-          cartItems.length === 0 ? "hidden" : ""
-        }`}
-      ><div className="sticky top-5">
-        <h2 className="text-xl font-semibold mb-4">Cart</h2>
-        {cartItems.map((item, index) => (
-          <div key={index} className="mb-4">
-            <h3 className="text-lg">{item.title}</h3>
-            <div className="flex items-center justify-between">
-              <Image
-                className="w-20 h-auto"
-                src={item.thumbnail}
-                alt={item.title}
-                width={50}
-                height={50}
-              />
-              <p className="mb-2 mt-2 font-bold">${item.price}</p>
-            </div>
+      <div  className={`w-48 border-l border-gray-300 p-4 ml-4 ${cartItems.length === 0 ? "hidden" : ""}`}>
+        <div className="sticky top-5">
+          <h2 className="text-xl font-semibold mb-4">Cart</h2>
+          <div className="overflow-y-auto max-h-[calc(100vh-200px)]">
+            {cartItems.map((item, index) => (
+              <div key={index} className="mb-4">
+                <h3 className="text-lg">{item.title}</h3>
+                <div className="flex items-center justify-between">
+                  <Image
+                    className="w-20 h-auto"
+                    src={item.thumbnail}
+                    alt={item.title}
+                    width={50}
+                    height={50}
+                  />
+                  <p className="mb-2 mt-2 font-bold">${item.price}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        
+          <div className="sticky bottom-5">
+            <div className="flex justify-between mt-4 mb-4">
+              <span className="font-bold">Total:</span>
+              <span className="font-bold">
+                ${cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}
+              </span>
+            </div>
 
-        <div className="flex justify-between mt-4 mb-4">
-          <span className="font-bold">Total:</span>
-          <span className="font-bold">
-            $
-            {cartItems
-              .reduce((total, item) => total + item.price, 0)
-              .toFixed(2)}
-          </span>
+            <Link href={generatePaymentUrl()}>
+              <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
+                Checkout
+              </button>
+            </Link>
+          </div>
         </div>
-
-       <Link href={generatePaymentUrl()}>
-          <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
-            Checkout
-          </button>
-        </Link>
-      </div>
       </div>
     </div>
   );
