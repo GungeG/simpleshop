@@ -114,7 +114,7 @@ export default function Home() {
         className={`w-48 border-l border-gray-300 p-4 ml-4 ${
           cartItems.length === 0 ? "hidden" : ""
         }`}
-      >
+      ><div className="sticky top-5">
         <h2 className="text-xl font-semibold mb-4">Cart</h2>
         {cartItems.map((item, index) => (
           <div key={index} className="mb-4">
@@ -147,6 +147,7 @@ export default function Home() {
             Checkout
           </button>
         </Link>
+      </div>
       </div>
     </div>
   );
