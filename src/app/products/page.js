@@ -119,6 +119,7 @@ export default function Home() {
             </div>
           </div>
         ))}
+
         <div className="flex justify-between mt-4 mb-4">
           <span className="font-bold">Total:</span>
           <span className="font-bold">
@@ -128,11 +129,12 @@ export default function Home() {
               .toFixed(2)}
           </span>
         </div>
-        {/* <Link href={`/payments?items=${item.id, item.thumbnail, item.title}`}>
-        <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
+
+        <Link href={`/payment?${cartItems.map(item => `id=${item.id}&thumbnail=${item.thumbnail}&title=${item.title}`).join('&')}`}>
+          <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
             Checkout
           </button>
-        </Link> */}
+        </Link>
       </div>
     </div>
   );
