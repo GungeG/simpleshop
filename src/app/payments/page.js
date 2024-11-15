@@ -1,8 +1,9 @@
 "use client";
 
+import { Suspense } from 'react';
 import { useSearchParams } from "next/navigation";
 
-const Payment = () => {
+const PaymentsPage = () => {
   const searchParams = useSearchParams();
   const paramValues = searchParams.getAll("items"); // Use 'getAll' to retrieve multiple values
 
@@ -50,4 +51,10 @@ const Payment = () => {
   );
 };
 
-export default Payment;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PaymentsPage />
+    </Suspense>
+  );
+}
