@@ -11,6 +11,7 @@ const Payment = () => {
 
   // Calculate the total price
   const totalPrice = items.reduce((total, item) => total + item.price, 0);
+ 
 
   return (
     <div className="p-3">
@@ -39,7 +40,9 @@ const Payment = () => {
         </h2>
       </div>
       <div className="flex justify-end mt-4">
-      <button className="p-2 bg-blue-800 text-white rounded-xl w-36" onClick={console.log("Thanks for your money!")}>
+      <button className="p-2 bg-blue-800 text-white rounded-xl w-36" onClick={()=> {console.log("Thanks for your money!"),
+      alert("Check Console.log :)")
+      }}>
             Checkout
           </button>
           </div>
