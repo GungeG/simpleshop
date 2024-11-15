@@ -42,7 +42,7 @@ const Page = async ({ params }) => {
         </div>
       </section>
       <hr className="my-4 border-t border-gray-200" />
-      <section>
+      <section className="md:m-5">
         <h2 className="text-xl font-semibold mb-4 flex items-center">
           Reviews
           <span className="ml-2">
