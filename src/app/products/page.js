@@ -131,17 +131,14 @@ export default function Home() {
             ))}
           </div>
         
-          <div className="fixed bottom-0 left-0 right-0 bg-background p-4">
+          <div className="sticky bottom-5">
             <div className="flex justify-between mt-4 mb-4">
               <span className="font-bold">Total:</span>
               <span className="font-bold">
-                $
-                {cartItems
-                  .reduce((total, item) => total + item.price, 0)
-                  .toFixed(2)}
+                ${cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}
               </span>
             </div>
-        
+
             <Link href={generatePaymentUrl()}>
               <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
                 Checkout
