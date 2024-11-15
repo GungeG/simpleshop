@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
   // State to store the list of products
@@ -150,5 +151,25 @@ export default function Home() {
       </div>
       </div>
     </div>
+  );
+}
+
+function PaymentsPage() {
+  const searchParams = useSearchParams();
+
+  // Your component logic here
+
+  return (
+    <div>
+      {/* Your component JSX here */}
+    </div>
+  );
+}
+
+export function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PaymentsPage />
+    </Suspense>
   );
 }
