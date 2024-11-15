@@ -13,6 +13,18 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("");
   // State to store the cart items
   const [cartItems, setCartItems] = useState([]);
+  
+  // Function to generate the payment URL with cart items
+  const generatePaymentUrl = () => {
+    const baseUrl = "/payments";
+    const queryParams = cartItems
+      .map((item) => {
+        const { thumbnail, title, price } = item;
+        return `items=${JSON.stringify({ thumbnail, title, price })}`;
+      })
+      .join("&");
+    return `${baseUrl}?${queryParams}`;
+  };
 
   // useEffect hook to fetch products data when the component mounts
   useEffect(() => {
@@ -130,7 +142,7 @@ export default function Home() {
           </span>
         </div>
 
-        <Link href={`/payment?${cartItems.map(item => `id=${item.id}&thumbnail=${item.thumbnail}&title=${item.title}`).join('&')}`}>
+       <Link href={generatePaymentUrl()}>
           <button className="p-2 bg-blue-800 text-white rounded-xl w-36">
             Checkout
           </button>
