@@ -72,7 +72,7 @@ export default function Home() {
           <select
             id="category"
             value={selectedCategory}
-            onChange={handleCategoryChange}
+            onInput={handleCategoryChange}
             className="p-2 border border-gray-300 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">All</option>
